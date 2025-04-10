@@ -1,0 +1,14 @@
+body{
+    font-family: 'Open-Sans', sans-serif;
+    background-color: hotpink;
+}
+
+h1{
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.tulisan_login{
+    text-align: center;
+    text-transform: uppercase;
+}
