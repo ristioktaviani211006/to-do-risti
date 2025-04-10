@@ -74,7 +74,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .logout-button {
             text-decoration: none;
             background-color: rgb(255, 255, 255);
+<<<<<<< HEAD
             
+=======
+            color: ;
+>>>>>>> b527b211405a4de6a1a89be4368e1d7172d29dd6
             padding: 8px 15px;
             border-radius: 5px;
             font-size: 14px;
@@ -164,8 +168,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="container">
     <form method="POST">
+<<<<<<< HEAD
         <input type="text" name="title" value="<?= htmlspecialchars($task['title']) ?>" required <?php if ($task['status'] == 'selesai' || ($task['priority'] != 'penting' && strtotime($task['due_date']) < time())) echo 'disabled';?>
 
+=======
+        <input type="text" name="title" value="<?= htmlspecialchars($task['title']) ?>" required <?php if ($task['status'] == 'selesai' || strtotime($task['due_date']) < time()) echo 'disabled'; ?>>
+>>>>>>> b527b211405a4de6a1a89be4368e1d7172d29dd6
         <textarea name="description" placeholder="Deskripsi tugas" <?php if ($task['status'] == 'selesai' || strtotime($task['due_date']) < time()) echo 'disabled'; ?>><?= htmlspecialchars($task['description']) ?></textarea>
         <input type="date" name="due_date" value="<?= htmlspecialchars($task['due_date']) ?>" required <?php if ($task['status'] == 'selesai' || strtotime($task['due_date']) < time()) echo 'disabled'; ?>>
         <select name="priority" <?php if ($task['status'] == 'selesai' || strtotime($task['due_date']) < time()) echo 'disabled'; ?>>
@@ -173,7 +181,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <option value="tidak penting" <?= $task['priority'] == 'tidak penting' ? 'selected' : '' ?>>tidak penting</option>
             <option value="biasa" <?= $task['priority'] == 'biasa' ? 'selected' : '' ?>>biasa</option>
         </select>
+<<<<<<< HEAD
         
+=======
+        <select name="status" <?php if ($task['status'] == 'selesai' || strtotime($task['due_date']) < time()) echo 'disabled'; ?>>
+            <option value="ditunda" <?= $task['status'] == 'ditunda' ? 'selected' : '' ?>>ditunda</option>
+            <option value="belum dikerjakan" <?= $task['status'] == 'belum dikerjakan' ? 'selected' : '' ?>>belum dikerjakan</option>
+            <option value="selesai" <?= $task['status'] == 'selesai' ? 'selected' : '' ?>>selesai</option>
+        </select>
+>>>>>>> b527b211405a4de6a1a89be4368e1d7172d29dd6
         <button type="submit" <?php if ($task['status'] == 'selesai' || strtotime($task['due_date']) < time()) echo 'disabled'; ?>>Update Task</button>
     </form>
 

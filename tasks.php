@@ -9,12 +9,16 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
+<<<<<<< HEAD
 // Menambahkan tugas baru
+=======
+>>>>>>> b527b211405a4de6a1a89be4368e1d7172d29dd6
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['title'])) {
     $title = $_POST['title'];
     $description = $_POST['description'];
     $due_date = $_POST['due_date'];
     $priority = $_POST['priority'];
+<<<<<<< HEAD
 
     $stmt = $pdo->prepare("INSERT INTO tasks (user_id, title, description, due_date, priority, status) 
                            VALUES (?, ?, ?, ?, ?, ?)");
@@ -49,6 +53,16 @@ $tasks = $pdo->prepare("
     WHERE t.user_id = ?
     ORDER BY t.status ASC, t.due_date ASC
 ");
+=======
+    $status = $_POST['status'];
+
+    $stmt = $pdo->prepare("INSERT INTO tasks (user_id, title, description, due_date, priority, status) 
+                           VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->execute([$user_id, $title, $description, $due_date, $priority, $status]);
+}
+
+$tasks = $pdo->prepare("SELECT * FROM tasks WHERE user_id = ?");
+>>>>>>> b527b211405a4de6a1a89be4368e1d7172d29dd6
 $tasks->execute([$user_id]);
 ?>
 
@@ -175,6 +189,7 @@ $tasks->execute([$user_id]);
         .actions a:hover {
             text-decoration: underline;
         }
+<<<<<<< HEAD
 
         .status-checkbox {
             display: flex;
@@ -186,6 +201,8 @@ $tasks->execute([$user_id]);
             text-decoration: line-through;
             color: gray;
         }
+=======
+>>>>>>> b527b211405a4de6a1a89be4368e1d7172d29dd6
     </style>
 </head>
 <body>
@@ -196,6 +213,7 @@ $tasks->execute([$user_id]);
 </header>
 
 <div class="container">
+<<<<<<< HEAD
     <?php if (isset($_SESSION['error'])): ?>
         <p style="color: red;"><?= $_SESSION['error']; unset($_SESSION['error']); ?></p>
     <?php endif; ?>
@@ -205,12 +223,27 @@ $tasks->execute([$user_id]);
         <textarea name="description" placeholder="Deskripsi tugas"></textarea>
         <input type="date" name="due_date" id="due_date" required min="<?= date('Y-m-d') ?>">
 
+=======
+    <form method="POST">
+        <input type="text" name="title" placeholder="Judul Tugas" required>
+        <textarea name="description" placeholder="Deskripsi tugas"></textarea>
+        <input type="date" name="due_date" id="due_date" required>
+>>>>>>> b527b211405a4de6a1a89be4368e1d7172d29dd6
         <select name="priority">
             <option value="penting">penting</option>
             <option value="tidak penting" selected>tidak penting</option>
             <option value="biasa">biasa</option>
         </select>
+<<<<<<< HEAD
         <button type="submit">Tambah Tugas</button>
+=======
+        <select name="status">
+            <option value="ditunda" selected>ditunda</option>
+            <option value="belum dikerjakan">belum dikerjakan</option>
+            <option value="selesai">selesai</option>
+        </select>
+        <button type="submit">Tambah List</button>
+>>>>>>> b527b211405a4de6a1a89be4368e1d7172d29dd6
     </form>
 
     <table>
@@ -224,6 +257,7 @@ $tasks->execute([$user_id]);
         </tr>
         <?php foreach ($tasks as $task): ?>
         <tr>
+<<<<<<< HEAD
             <td class="<?= $task['status'] === 'selesai' ? 'completed' : '' ?>">
                 <?= htmlspecialchars($task['title']) ?>
             </td>
@@ -249,12 +283,26 @@ $tasks->execute([$user_id]);
                 <a href="edit_task.php?id=<?= $task['id'] ?>" <?= $task['status'] === 'selesai' ? 'style="pointer-events: none; color: gray;"' : '' ?>>Edit</a>
                 <a href="delete_task.php?id=<?= $task['id'] ?>">Hapus</a>
             </td>
+=======
+            <td><?= htmlspecialchars($task['title']) ?></td>
+            <td><?= htmlspecialchars($task['description']) ?></td>
+            <td><?= htmlspecialchars($task['due_date']) ?></td>
+            <td><?= htmlspecialchars($task['priority']) ?></td>
+            <td><?= htmlspecialchars($task['status']) ?></td>
+            <td class="actions">
+    <a href="subtasks.php?task_id=<?= $task['id'] ?>">Lihat Subtask</a>
+    <a href="edit_task.php?id=<?= $task['id'] ?>">Edit</a>
+    <a href="delete_task.php?id=<?= $task['id'] ?>">Hapus</a>
+</td>
+
+>>>>>>> b527b211405a4de6a1a89be4368e1d7172d29dd6
         </tr>
         <?php endforeach; ?>
     </table>
 </div>
 
 <script>
+<<<<<<< HEAD
     function confirmSubtasks(unfinishedCount) {
         if (unfinishedCount > 0) {
             alert("Tidak bisa menyelesaikan tugas karena masih ada subtask yang belum selesai!");
@@ -262,6 +310,10 @@ $tasks->execute([$user_id]);
         }
         return true;
     }
+=======
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('due_date').setAttribute('min', today);
+>>>>>>> b527b211405a4de6a1a89be4368e1d7172d29dd6
 </script>
 
 </body>

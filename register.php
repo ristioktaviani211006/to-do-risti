@@ -1,8 +1,11 @@
 <?php
 require 'db.php';
 
+<<<<<<< HEAD
 $message = ""; // Variabel untuk menyimpan pesan
 
+=======
+>>>>>>> b527b211405a4de6a1a89be4368e1d7172d29dd6
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -12,11 +15,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $count = $stmt->fetchColumn();
 
     if ($count > 0) {
+<<<<<<< HEAD
         $message = "<p class='error'>Username already taken. Please choose another one.</p>";
     } else {
         $stmt = $pdo->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
         $stmt->execute([$username, $password]);
         $message = "<p class='success'>Registration successful.";
+=======
+        echo "<p class='error'>Username already taken. Please choose another one.</p>";
+    } else {
+        $stmt = $pdo->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
+        $stmt->execute([$username, $password]);
+        echo "<p class='success'>Registration successful. <a href='login.php'>Login</a></p>";
+>>>>>>> b527b211405a4de6a1a89be4368e1d7172d29dd6
     }
 }
 ?>
@@ -59,7 +70,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         input[type="text"],
         input[type="password"] {
+<<<<<<< HEAD
             width: 95%;
+=======
+            width: 100%;
+>>>>>>> b527b211405a4de6a1a89be4368e1d7172d29dd6
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #b399d4;
@@ -114,6 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="password" name="password" id="password" required><br>
 
         <button type="submit">Register</button>
+<<<<<<< HEAD
         
 
         <!-- Menampilkan pesan di bawah tombol -->
@@ -122,6 +138,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <p></p>
     <p>Sudah punya akun?</p>
     <a href="login.php">Login</a>
+=======
+    </form>
+>>>>>>> b527b211405a4de6a1a89be4368e1d7172d29dd6
 </div>
 
 </body>

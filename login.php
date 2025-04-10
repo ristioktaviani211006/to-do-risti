@@ -2,8 +2,11 @@
 require 'db.php';
 session_start();
 
+<<<<<<< HEAD
 $error = '';
 
+=======
+>>>>>>> b527b211405a4de6a1a89be4368e1d7172d29dd6
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -17,7 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: tasks.php");
         exit;
     } else {
+<<<<<<< HEAD
         $error = "Username atau password yang dimasukkan salah.";
+=======
+        echo "Invalid credentials.";
+>>>>>>> b527b211405a4de6a1a89be4368e1d7172d29dd6
     }
 }
 ?>
@@ -90,6 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         .error {
             color: red;
+<<<<<<< HEAD
             font-size: 14px;
             margin-top: 10px;
         }
@@ -103,12 +111,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         .register-link:hover {
             text-decoration: underline;
+=======
+            margin-bottom: 15px;
+            font-size: 14px;
+>>>>>>> b527b211405a4de6a1a89be4368e1d7172d29dd6
         }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h1>Login</h1>
+<<<<<<< HEAD
+=======
+        
+        <?php if (!empty($error)): ?>
+            <div class="error"><?php echo $error; ?></div>
+        <?php endif; ?>
+>>>>>>> b527b211405a4de6a1a89be4368e1d7172d29dd6
 
         <form method="POST">
             <label for="username">Username</label>
@@ -118,12 +137,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="password" id="password" name="password" required>
 
             <button type="submit">Login</button>
+<<<<<<< HEAD
             
             <a class="register-link" href="register.php">Belum punya akun?</a>
 
             <?php if (!empty($error)): ?>
                 <div class="error"><?php echo $error; ?></div>
             <?php endif; ?>
+=======
+>>>>>>> b527b211405a4de6a1a89be4368e1d7172d29dd6
         </form>
     </div>
 </body>
